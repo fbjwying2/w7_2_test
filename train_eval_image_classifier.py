@@ -24,6 +24,7 @@ if __name__ == '__main__':
     weight_decay = 0.004
 
     eval_dir = '/output/eval72'
+    max_num_batches = 128
 
     step_per_epoch = max_number_of_steps
     for i in range(30):
