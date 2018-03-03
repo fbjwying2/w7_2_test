@@ -20,7 +20,7 @@ if __name__ == '__main__':
     learning_rate = 0.1
     learning_rate_decay_factor = 0.1
     num_epochs_per_decay = 200
-    clone_on_cpu = false
+    clone_on_cpu = False
     weight_decay = 0.004
 
     eval_dir = '/output/eval72'
