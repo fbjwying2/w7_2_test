@@ -20,7 +20,7 @@ if __name__ == '__main__':
     FLAGS, unparsed = parse_args()
     print('current working dir [{0}]'.format(os.getcwd()))
     w_d = os.path.dirname(os.path.abspath(__file__))
-    print('change wording dir to [{0}]'.format(w_d))
+    print('change working dir to [{0}]'.format(w_d))
     os.chdir(w_d)
 
     train_dir = '/output/ckpt72'
@@ -28,8 +28,8 @@ if __name__ == '__main__':
     dataset_dir = '/data/ai100/quiz-w7'
     dataset_split_name = 'train'
     model_name = 'densenet'
-    max_number_of_steps = 1000
-    batch_size = 32
+    max_number_of_steps = 50000
+    batch_size = 64
     optimizer = 'sgd'
     learning_rate = FLAGS.learning_rate
     learning_rate_decay_factor = 0.1
@@ -58,11 +58,11 @@ if __name__ == '__main__':
         for l in p:
             print(p.strip())
 
-        # eval
-        print('################    eval    ################')
-        p = os.popen(eval_cmd.format(**{'dataset_name': dataset_name, 'dataset_dir': dataset_dir,
-                                        'dataset_split_name': 'validation', 'model_name': model_name,
-                                        'checkpoint_path': train_dir, 'batch_size': batch_size,
-                                        'eval_dir': eval_dir, 'max_num_batches': max_num_batches}))
-        for l in p:
-            print(p.strip())
+    # eval
+    print('################    eval    ################')
+    p = os.popen(eval_cmd.format(**{'dataset_name': dataset_name, 'dataset_dir': dataset_dir,
+                                    'dataset_split_name': 'validation', 'model_name': model_name,
+                                    'checkpoint_path': train_dir, 'batch_size': batch_size,
+                                    'eval_dir': eval_dir, 'max_num_batches': max_num_batches}))
+    for l in p:
+        print(p.strip())
