@@ -58,7 +58,7 @@ def densenet(images, num_classes=1000, is_training=False,
       end_points: a dictionary from components of the network to the corresponding
         activation.
     """
-    growth = 12  # 12
+    growth = 24  # 12
     compression_rate = 0.5
 
     final_endpoint = 'Max_f'
@@ -75,7 +75,7 @@ def densenet(images, num_classes=1000, is_training=False,
 
             #print("densenet dense block layers:[6, 12, 32, 32]")
             #layers = [6, 12, 32, 32]
-            layers = [6, 6, 6, 6]
+            layers = [6, 12, 12, 6]
 
             #imput 229 * 229 * 3
 
