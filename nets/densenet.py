@@ -58,7 +58,7 @@ def densenet(images, num_classes=1000, is_training=False,
       end_points: a dictionary from components of the network to the corresponding
         activation.
     """
-    growth = 24  # 12
+    growth = 32  # 12
     compression_rate = 0.5
 
     final_endpoint = 'Max_f'
@@ -72,6 +72,9 @@ def densenet(images, num_classes=1000, is_training=False,
         with slim.arg_scope(bn_drp_scope(is_training=is_training,
                                          keep_prob=dropout_keep_prob)) as ssc:
             #pass
+
+            print("densenet dense block layers:[6, 12, 32, 32]")
+            layers = [6, 12, 32, 32]
 
             #imput 229 * 229 * 3
 
@@ -90,7 +93,7 @@ def densenet(images, num_classes=1000, is_training=False,
             #Output Size 56 * 56 * growth * 2
 
             #Dense Block1
-            net = block(net, 6, growth, "Block_3a")
+            net = block(net, layers[0], growth, "Block_3a")
             #Output Size 56 * 56 * growth
 
             #Transition Layer
@@ -107,7 +110,7 @@ def densenet(images, num_classes=1000, is_training=False,
             # Output Size 28 * 28 * growth
 
             #Dense Block2
-            net = block(net, 12, growth, "Block_1b")
+            net = block(net, layers[1], growth, "Block_1b")
             #Output Size 28 * 28 * growth
 
             #Transition Layer
@@ -124,7 +127,7 @@ def densenet(images, num_classes=1000, is_training=False,
             # Output Size 14 * 14 * growth
 
             #Dense Block3
-            net = block(net, 24, growth, "Block_1c")
+            net = block(net, layers[2], growth, "Block_1c")
             #Output Size 14 * 14 * growth
 
             #Transition Layer
@@ -141,7 +144,7 @@ def densenet(images, num_classes=1000, is_training=False,
             # Output Size 7 * 7 * growth
 
             # Dense Block4
-            net = block(net, 16, growth, "Block_1d")
+            net = block(net, layers[3], growth, "Block_1d")
             # Output Size 7 * 7 * growth
 
             with tf.variable_scope('Logits'):
