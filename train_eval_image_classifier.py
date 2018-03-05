@@ -28,8 +28,8 @@ if __name__ == '__main__':
     dataset_dir = '/data/ai100/quiz-w7'
     dataset_split_name = 'train'
     model_name = 'densenet'
-    max_number_of_steps = 5000
-    batch_size = 32
+    max_number_of_steps = 500
+    batch_size = 256
     optimizer = 'sgd'
     learning_rate = FLAGS.learning_rate
     learning_rate_decay_factor = 0.1
@@ -40,10 +40,9 @@ if __name__ == '__main__':
     eval_dir = '/output/eval72'
     max_num_batches = 128
 
-    step_per_epoch = 98800
+    step_per_epoch = max_number_of_steps
     for i in range(30):
         steps = int(step_per_epoch * (i + 1))
-        step_per_epoch = max_number_of_steps
         # train 1 epoch
         print('################    train    ################')
         p = os.popen(train_cmd.format(**{'train_dir': train_dir,
