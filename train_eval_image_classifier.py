@@ -28,8 +28,8 @@ if __name__ == '__main__':
     dataset_dir = '/data/ai100/quiz-w7'
     dataset_split_name = 'train'
     model_name = 'densenet'
-    max_number_of_steps = 1000
-    batch_size = 128
+    max_number_of_steps = 2000
+    batch_size = 64
     optimizer = 'sgd'
     learning_rate = FLAGS.learning_rate
     learning_rate_decay_factor = 0.1
