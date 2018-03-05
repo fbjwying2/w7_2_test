@@ -40,6 +40,15 @@ if __name__ == '__main__':
     eval_dir = '/output/eval72'
     max_num_batches = 128
 
+    # eval
+    print('################    eval    ################')
+    p = os.popen(eval_cmd.format(**{'dataset_name': dataset_name, 'dataset_dir': dataset_dir,
+                                    'dataset_split_name': 'validation', 'model_name': model_name,
+                                    'checkpoint_path': train_dir, 'batch_size': batch_size,
+                                    'eval_dir': eval_dir, 'max_num_batches': max_num_batches}))
+    for l in p:
+        print(p.strip())
+
     step_per_epoch = max_number_of_steps
     for i in range(2, 3):
         steps = int(step_per_epoch * (i + 1))
