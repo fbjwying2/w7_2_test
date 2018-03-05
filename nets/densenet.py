@@ -39,7 +39,7 @@ def block(net, layers, growth, scope='block'):
 def depth(num):
 	return int(num)
 
-def densenet(images, num_classes=1000, is_training=False,
+def densenet(images, num_classes=1001, is_training=False,
              dropout_keep_prob=0.8,
              scope='densenet'):
     """Creates a variant of the densenet model.
@@ -75,7 +75,7 @@ def densenet(images, num_classes=1000, is_training=False,
 
             #print("densenet dense block layers:[6, 12, 32, 32]")
             #layers = [6, 12, 32, 32]
-            layers = [6, 12, 12, 6]
+            layers = [6, 12, 24, 16]
 
             #imput 229 * 229 * 3
 
