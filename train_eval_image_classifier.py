@@ -28,7 +28,7 @@ if __name__ == '__main__':
     dataset_dir = '/data/ai100/quiz-w7'
     dataset_split_name = 'train'
     model_name = 'densenet'
-    max_number_of_steps = 50000
+    max_number_of_steps = 5000
     batch_size = 32
     optimizer = 'sgd'
     learning_rate = FLAGS.learning_rate
@@ -58,11 +58,11 @@ if __name__ == '__main__':
         for l in p:
             print(p.strip())
 
-    # eval
-    print('################    eval    ################')
-    p = os.popen(eval_cmd.format(**{'dataset_name': dataset_name, 'dataset_dir': dataset_dir,
-                                    'dataset_split_name': 'validation', 'model_name': model_name,
-                                    'checkpoint_path': train_dir, 'batch_size': batch_size,
-                                    'eval_dir': eval_dir, 'max_num_batches': max_num_batches}))
-    for l in p:
-        print(p.strip())
+        # eval
+        print('################    eval    ################')
+        p = os.popen(eval_cmd.format(**{'dataset_name': dataset_name, 'dataset_dir': dataset_dir,
+                                        'dataset_split_name': 'validation', 'model_name': model_name,
+                                        'checkpoint_path': train_dir, 'batch_size': batch_size,
+                                        'eval_dir': eval_dir, 'max_num_batches': max_num_batches}))
+        for l in p:
+            print(p.strip())
