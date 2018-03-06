@@ -10,10 +10,6 @@ def parse_args(check=True):
     # train
     parser.add_argument('--learning_rate', type=float, default=0.001)
 
-
-    #Additional parameters
-    parser.add_argument('--run_eval_first ', type=int, default=0)
-
     FLAGS, unparsed = parser.parse_known_args()
     return FLAGS, unparsed
 
@@ -32,7 +28,7 @@ if __name__ == '__main__':
     dataset_dir = '/data/ai100/quiz-w7'
     dataset_split_name = 'train'
     model_name = 'densenet'
-    max_number_of_steps = 2000
+    max_number_of_steps = 5000
     batch_size = 48
     optimizer = 'sgd'
     learning_rate = FLAGS.learning_rate
@@ -44,18 +40,18 @@ if __name__ == '__main__':
     eval_dir = '/output/eval72'
     max_num_batches = 128
 
-    if FLAGS.run_eval_first == 1:
-        # eval
-        print('################    eval    ################')
-        p = os.popen(eval_cmd.format(**{'dataset_name': dataset_name, 'dataset_dir': dataset_dir,
-                                        'dataset_split_name': 'validation', 'model_name': model_name,
-                                        'checkpoint_path': train_dir, 'batch_size': batch_size,
-                                        'eval_dir': eval_dir, 'max_num_batches': max_num_batches}))
-        for l in p:
-            print(p.strip())
+
+    # eval
+    print('################    eval    ################')
+    p = os.popen(eval_cmd.format(**{'dataset_name': dataset_name, 'dataset_dir': dataset_dir,
+                                    'dataset_split_name': 'validation', 'model_name': model_name,
+                                    'checkpoint_path': train_dir, 'batch_size': batch_size,
+                                    'eval_dir': eval_dir, 'max_num_batches': max_num_batches}))
+    for l in p:
+        print(p.strip())
 
     step_per_epoch = max_number_of_steps
-    for i in range(30):
+    for i in range(2, 30):
         steps = int(step_per_epoch * (i + 1))
         # train 1 epoch
         print('################    train    ################')
