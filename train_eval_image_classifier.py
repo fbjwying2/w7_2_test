@@ -51,7 +51,7 @@ if __name__ == '__main__':
         print(p.strip())
 
     step_per_epoch = max_number_of_steps
-    for i in range(2, 30):
+    for i in range(3, 30):
         steps = int(step_per_epoch * (i + 1))
         # train 1 epoch
         print('################    train    ################')
