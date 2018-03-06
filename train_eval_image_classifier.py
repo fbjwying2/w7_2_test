@@ -29,7 +29,7 @@ if __name__ == '__main__':
     dataset_split_name = 'train'
     model_name = 'densenet'
     max_number_of_steps = 5000
-    batch_size = 48
+    batch_size = 64
     optimizer = 'sgd'
     learning_rate = FLAGS.learning_rate
     learning_rate_decay_factor = 0.1
