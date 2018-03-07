@@ -28,7 +28,7 @@ if __name__ == '__main__':
     dataset_dir = '/data/ai100/quiz-w7'
     dataset_split_name = 'train'
     model_name = 'densenet'
-    max_number_of_steps = 100
+    max_number_of_steps = 1000
     batch_size = 32
     optimizer = 'sgd'
     learning_rate = FLAGS.learning_rate
@@ -36,7 +36,7 @@ if __name__ == '__main__':
     num_epochs_per_decay = 200
     clone_on_cpu = True
     weight_decay = 0.004
-    preprocessing_name = 'densenet'
+    #preprocessing_name = 'densenet'
 
     eval_dir = '/output/eval72'
     max_num_batches = 128
@@ -55,8 +55,7 @@ if __name__ == '__main__':
                                          'learning_rate': learning_rate, 'learning_rate_decay_factor':learning_rate_decay_factor,
                                          'num_epochs_per_decay':num_epochs_per_decay,
                                          'weight_decay':weight_decay,
-                                          'clone_on_cpu':clone_on_cpu,
-                                         'preprocessing_name': preprocessing_name}))
+                                          'clone_on_cpu':clone_on_cpu}))
         for l in p:
             print(p.strip())
 
