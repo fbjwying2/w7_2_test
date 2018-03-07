@@ -34,7 +34,7 @@ if __name__ == '__main__':
     learning_rate = FLAGS.learning_rate
     learning_rate_decay_factor = 0.1
     num_epochs_per_decay = 200
-    clone_on_cpu = False
+    clone_on_cpu = True
     weight_decay = 0.004
     preprocessing_name = 'densenet'
 
@@ -55,7 +55,8 @@ if __name__ == '__main__':
                                          'learning_rate': learning_rate, 'learning_rate_decay_factor':learning_rate_decay_factor,
                                          'num_epochs_per_decay':num_epochs_per_decay,
                                          'weight_decay':weight_decay,
-                                          'clone_on_cpu':clone_on_cpu}))
+                                          'clone_on_cpu':clone_on_cpu,
+                                         'preprocessing_name': preprocessing_name}))
         for l in p:
             print(p.strip())
 
