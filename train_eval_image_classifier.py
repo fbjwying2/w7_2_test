@@ -36,6 +36,7 @@ if __name__ == '__main__':
     num_epochs_per_decay = 200
     clone_on_cpu = False
     weight_decay = 0.004
+    preprocessing_name = 'densenet'
 
     eval_dir = '/output/eval72'
     max_num_batches = 128
