@@ -25,6 +25,8 @@ from preprocessing import inception_preprocessing
 from preprocessing import lenet_preprocessing
 from preprocessing import vgg_preprocessing
 
+from preprocessing import densenet_preprocessing
+
 slim = tf.contrib.slim
 
 
@@ -68,7 +70,7 @@ def get_preprocessing(name, is_training=False):
       'vgg_a': vgg_preprocessing,
       'vgg_16': vgg_preprocessing,
       'vgg_19': vgg_preprocessing,
-      'densenet':inception_preprocessing,
+      'densenet':densenet_preprocessing,
   }
 
   if name not in preprocessing_fn_map:
